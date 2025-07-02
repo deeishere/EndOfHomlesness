@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <Adafruit_Fingerprint.h>
-
+#include <HardwareSerial.h> // Optional, sometimes not even needed
 // Define pins for R307
 #define RX_PIN 16
 #define TX_PIN 17
@@ -19,7 +19,7 @@ void setup()
   Serial.println("\n\nR307 Fingerprint sensor enrollment");
 
   // Initialize UART2 with explicit pins for R307
-  serialPort.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);//try swap RX and TX
+  serialPort.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);//try swap RX and TX // Many R307s default to 57600, but some clones are set to 19200.
   delay(100);
   
   // Initialize fingerprint sensor
