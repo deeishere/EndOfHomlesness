@@ -1,0 +1,41 @@
+
+
+Alternative Wiring Configurations:
+Try Different GPIO Pins:
+// Option 1: Use GPIO 4 and 2
+#define RX_PIN 4
+#define TX_PIN 2
+
+// Option 2: Use GPIO 25 and 26
+#define RX_PIN 25
+#define TX_PIN 26
+
+// Option 3: Use GPIO 32 and 33
+#define RX_PIN 32
+#define TX_PIN 33
+
+////Different Baud Rates to Test:
+// Try each of these in sequence:
+serialPort.begin(9600, SERIAL_8N1, RX_PIN, TX_PIN);
+// or
+serialPort.begin(19200, SERIAL_8N1, RX_PIN, TX_PIN);
+// or
+serialPort.begin(38400, SERIAL_8N1, RX_PIN, TX_PIN);
+// or
+serialPort.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
+
+
+
+//Raw Serial Communication Test:
+void setup() {
+  Serial.begin(9600);
+  Serial2.begin(57600, SERIAL_8N1, 16, 17);
+  
+  // Send test command to R307
+  uint8_t packet[] = {0xEF, 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0x01, 0x00, 0x03, 0x01, 0x00, 0x05};
+  Serial2.write(packet, 12);
+}
+
+
+// Instead of Adafruit_Fingerprint, try:
+#include <FPM.h>  // FPM library for R307
