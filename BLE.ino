@@ -311,7 +311,7 @@ int8_t getFingerprintEnroll() {
     return p;
   }
 
-  Serial.print("ID "); Serial.println(id);
+   Serial.print("ID "); Serial.println(id);
   p = finger.storeModel(id);
   if (p == FINGERPRINT_OK) {
     Serial.println("Stored!");
@@ -328,9 +328,9 @@ int8_t getFingerprintEnroll() {
     Serial.println("Unknown error");
     return p;
   }
+
   return true;
-}     Serial.println("Unknown error");
-      break;
+}
 
 /// End Enroll
 
